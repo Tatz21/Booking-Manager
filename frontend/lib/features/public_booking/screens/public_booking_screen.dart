@@ -236,19 +236,32 @@ class _PublicBookingScreenState extends ConsumerState<PublicBookingScreen> {
                 final s = services[index];
                 final isSelected = _selectedService?.id == s.id;
                 return Card(
-                  color: isSelected ? brandColor.withOpacity(0.12) : Colors.white,
+                  color: isSelected ? brandColor.withValues(alpha: 0.15) : AppColors.surfaceElevated,
                   shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(12),
+                    borderRadius: BorderRadius.circular(16),
                     side: BorderSide(
                       color: isSelected ? brandColor : AppColors.border,
                       width: isSelected ? 2 : 1,
                     ),
                   ),
-                  margin: const EdgeInsets.only(bottom: 10),
+                  margin: const EdgeInsets.only(bottom: 12),
                   child: ListTile(
-                    title: Text(s.name, style: const TextStyle(fontWeight: FontWeight.bold)),
-                    subtitle: Text('${s.durationMinutes} min • ${s.description ?? ''}'),
-                    trailing: Text(s.formattedPrice, style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16, color: AppColors.success)),
+                    contentPadding: const EdgeInsets.symmetric(horizontal: 18, vertical: 8),
+                    title: Text(
+                      s.name,
+                      style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16, color: AppColors.textPrimary),
+                    ),
+                    subtitle: Padding(
+                      padding: const EdgeInsets.only(top: 4),
+                      child: Text(
+                        '${s.durationMinutes} min • ${s.description ?? ''}',
+                        style: const TextStyle(color: AppColors.textSecondary, fontSize: 13),
+                      ),
+                    ),
+                    trailing: Text(
+                      s.formattedPrice,
+                      style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 17, color: AppColors.success),
+                    ),
                     onTap: () {
                       setState(() {
                         _selectedService = s;
