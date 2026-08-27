@@ -1,0 +1,76 @@
+name: Continuous Integration (CI)
+
+on:
+  push:
+    branches: [main, master, develop]
+  pull_request:
+    branches: [main, master, develop]
+
+jobs:
+  backend-ci:
+    name: Backend Lint, Test & Build (Node ${{ matrix.node-version }})
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [20.x, 22.x]
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'npm'
+          cache-dependency-path: backend/package-lock.json
+
+      - name: Install dependencies
+        working-directory: backend
+        run: npm ci
+
+      - name: Generate Prisma Client
+        working-directory: backend
+        run: npx prisma generate
+
+      - name: Static Type Check
+        working-directory: backend
+        run: npm run typecheck
+
+      - name: Run Unit & Concurrency Tests
+        working-directory: backend
+        run: npm run test
+
+      - name: Run End-to-End Tests
+        working-directory: backend
+        run: npm run test:e2e
+
+      - name: Compile Production Build
+        working-directory: backend
+        run: npm run build
+
+  frontend-ci:
+    name: Frontend Analyze & Test (Flutter)
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          channel: 'stable'
+
+      - name: Install dependencies
+        working-directory: frontend
+        run: flutter pub get
+
+      - name: Run Flutter Tests
+        working-directory: frontend
+        run: flutter test
+
+      - name: Build Web Production
+        working-directory: frontend
+        run: flutter build web

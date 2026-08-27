@@ -1,0 +1,36 @@
+{
+    "name": "Apex Booking | Multi-Tenant Appointment SaaS",
+    "short_name": "ApexBooking",
+    "start_url": "./",
+    "display": "standalone",
+    "background_color": "#0F172A",
+    "theme_color": "#4F46E5",
+    "description": "Seamless real-time appointment booking and business management platform.",
+    "orientation": "portrait-primary",
+    "prefer_related_applications": false,
+    "categories": ["business", "productivity", "utilities"],
+    "icons": [
+        {
+            "src": "icons/Icon-192.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "icons/Icon-512.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        },
+        {
+            "src": "icons/Icon-maskable-192.png",
+            "sizes": "192x192",
+            "type": "image/png",
+            "purpose": "maskable"
+        },
+        {
+            "src": "icons/Icon-maskable-512.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "maskable"
+        }
+    ]
+}
