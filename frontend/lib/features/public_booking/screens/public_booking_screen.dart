@@ -571,19 +571,19 @@ class _PublicBookingScreenState extends ConsumerState<PublicBookingScreen> {
           const SizedBox(height: 20),
 
           // Payment Option Selector
-          const Text('Payment Preference', style: TextStyle(fontWeight: FontWeight.w600, fontSize: 13)),
+          const Text('Payment Preference', style: TextStyle(fontWeight: FontWeight.w600, fontSize: 13, color: AppColors.textPrimary)),
           const SizedBox(height: 8),
           Row(
             children: [
               Expanded(
                 child: InkWell(
                   onTap: () => setState(() => _selectedPaymentMethod = 'VENUE'),
-                  borderRadius: BorderRadius.circular(10),
+                  borderRadius: BorderRadius.circular(12),
                   child: Container(
-                    padding: const EdgeInsets.all(12),
+                    padding: const EdgeInsets.all(14),
                     decoration: BoxDecoration(
-                      color: _selectedPaymentMethod == 'VENUE' ? brandColor.withOpacity(0.12) : Colors.white,
-                      borderRadius: BorderRadius.circular(10),
+                      color: _selectedPaymentMethod == 'VENUE' ? brandColor.withValues(alpha: 0.15) : AppColors.surfaceElevated,
+                      borderRadius: BorderRadius.circular(12),
                       border: Border.all(
                         color: _selectedPaymentMethod == 'VENUE' ? brandColor : AppColors.border,
                         width: _selectedPaymentMethod == 'VENUE' ? 2 : 1,
@@ -596,7 +596,7 @@ class _PublicBookingScreenState extends ConsumerState<PublicBookingScreen> {
                           children: [
                             Icon(Icons.storefront_outlined, size: 18, color: _selectedPaymentMethod == 'VENUE' ? brandColor : AppColors.textSecondary),
                             const SizedBox(width: 6),
-                            const Text('Pay at Venue', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 13)),
+                            const Text('Pay at Venue', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 13, color: AppColors.textPrimary)),
                           ],
                         ),
                         const SizedBox(height: 4),
@@ -610,12 +610,12 @@ class _PublicBookingScreenState extends ConsumerState<PublicBookingScreen> {
               Expanded(
                 child: InkWell(
                   onTap: () => setState(() => _selectedPaymentMethod = 'ONLINE'),
-                  borderRadius: BorderRadius.circular(10),
+                  borderRadius: BorderRadius.circular(12),
                   child: Container(
-                    padding: const EdgeInsets.all(12),
+                    padding: const EdgeInsets.all(14),
                     decoration: BoxDecoration(
-                      color: _selectedPaymentMethod == 'ONLINE' ? brandColor.withOpacity(0.12) : Colors.white,
-                      borderRadius: BorderRadius.circular(10),
+                      color: _selectedPaymentMethod == 'ONLINE' ? brandColor.withValues(alpha: 0.15) : AppColors.surfaceElevated,
+                      borderRadius: BorderRadius.circular(12),
                       border: Border.all(
                         color: _selectedPaymentMethod == 'ONLINE' ? brandColor : AppColors.border,
                         width: _selectedPaymentMethod == 'ONLINE' ? 2 : 1,
@@ -628,7 +628,7 @@ class _PublicBookingScreenState extends ConsumerState<PublicBookingScreen> {
                           children: [
                             Icon(Icons.bolt_rounded, size: 18, color: _selectedPaymentMethod == 'ONLINE' ? brandColor : AppColors.textSecondary),
                             const SizedBox(width: 6),
-                            const Text('Pay Online', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 13)),
+                            const Text('Pay Online', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 13, color: AppColors.textPrimary)),
                           ],
                         ),
                         const SizedBox(height: 4),
