@@ -52,8 +52,8 @@ export declare class StaffController {
             createdAt: Date;
             updatedAt: Date;
             businessId: string;
-            staffId: string;
             dayOfWeek: number;
+            staffId: string;
             startTime: string;
             endTime: string;
             isOff: boolean;

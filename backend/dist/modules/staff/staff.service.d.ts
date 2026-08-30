@@ -40,8 +40,8 @@ export declare class StaffService {
             createdAt: Date;
             updatedAt: Date;
             businessId: string;
-            staffId: string;
             dayOfWeek: number;
+            staffId: string;
             startTime: string;
             endTime: string;
             isOff: boolean;
